@@ -16,11 +16,15 @@ public class DemoProjectReactorApplication implements CommandLineRunner {
 	private static final Logger log = LoggerFactory.getLogger(DemoProjectReactorApplication.class);
 
 	public void reactor() {
-		Mono.just(new Person(1, "Steven", 28)).subscribe(p -> log.info("[Reactor] Person: " + p.toString()));
+		Mono.just(new Person(1, "Steven", 28)).doOnNext(p -> {
+			// Aditional logic
+			log.info("[Reactor] Person (doOnNext): " + p.toString());
+		}).subscribe(p -> log.info("[Reactor] Person: " + p.toString()));
 	}
 
 	public void rxjava3() {
-		Observable.just(new Person(1, "Steven", 28)).subscribe(p -> log.info("[RxJava3] Person: " + p.toString()));
+		Observable.just(new Person(1, "Steven", 28)).doOnNext(p -> log.info("[RxJava3] Person: " + p.toString()))
+				.subscribe(p -> log.info("[RxJava3] Person: " + p.toString()));
 		;
 	}
 
