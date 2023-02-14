@@ -1,5 +1,8 @@
 package ec.com.learning.reactor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -8,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import ec.com.learning.reactor.model.Person;
 import io.reactivex.rxjava3.core.Observable;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @SpringBootApplication
@@ -28,14 +32,37 @@ public class DemoProjectReactorApplication implements CommandLineRunner {
 		;
 	}
 
+	public void mono() {
+		Mono.just(new Person(1, "Steven", 28)).subscribe(p -> log.info(p.toString()));
+	}
+
+	public void flux() {
+		List<Person> people = new ArrayList<>();
+		people.add(new Person(1, "Steven", 28));
+		people.add(new Person(2, "Andres", 29));
+		people.add(new Person(3, "German", 27));
+		Flux.fromIterable(people).subscribe(p -> log.info(p.toString()));
+
+	}
+
+	public void fluxMono() {
+		List<Person> people = new ArrayList<>();
+		people.add(new Person(1, "Steven", 28));
+		people.add(new Person(2, "Andres", 29));
+		people.add(new Person(3, "German", 27));
+		Flux<Person> fx = Flux.fromIterable(people);
+		fx.collectList().subscribe(list -> log.info(list.toString()));
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoProjectReactorApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		reactor();
-		rxjava3();
+		mono();
+		flux();
+		fluxMono();
 	}
 
 }
