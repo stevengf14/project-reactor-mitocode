@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import ec.com.learning.reactor.model.Person;
+import ec.com.learning.reactor.operator.creation.Creation;
 import io.reactivex.rxjava3.core.Observable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -60,9 +61,12 @@ public class DemoProjectReactorApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		mono();
-		flux();
-		fluxMono();
+		/*
+		 * mono(); flux(); fluxMono();
+		 */
+		Creation app = new Creation();
+		app.range();
+		app.repeat();
 	}
 
 }
