@@ -9,8 +9,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import ec.com.learning.reactor.filter.Filter;
 import ec.com.learning.reactor.model.Person;
 import ec.com.learning.reactor.operator.creation.Creation;
+import ec.com.learning.reactor.operator.transform.Transform;
 import io.reactivex.rxjava3.core.Observable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -64,9 +66,19 @@ public class DemoProjectReactorApplication implements CommandLineRunner {
 		/*
 		 * mono(); flux(); fluxMono();
 		 */
-		Creation app = new Creation();
-		app.range();
-		app.repeat();
+		/*
+		 * Creation app = new Creation(); app.range(); app.repeat();
+		 */
+		/*
+		 * Transform app = new Transform(); app.map(); app.flatMap(); app.groupBy();
+		 */
+		Filter app = new Filter();
+		// app.filter();
+		// app.distinct();
+		// app.take();
+		// app.takeLast();
+		//app.skip();
+		app.skipLast();
 	}
 
 }
