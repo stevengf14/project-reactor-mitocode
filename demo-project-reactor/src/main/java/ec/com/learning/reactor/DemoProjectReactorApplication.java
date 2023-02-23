@@ -9,9 +9,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.com.learning.reactor.filter.Filter;
 import ec.com.learning.reactor.model.Person;
+import ec.com.learning.reactor.operator.combination.Combination;
 import ec.com.learning.reactor.operator.creation.Creation;
+import ec.com.learning.reactor.operator.filter.Filter;
 import ec.com.learning.reactor.operator.transform.Transform;
 import io.reactivex.rxjava3.core.Observable;
 import reactor.core.publisher.Flux;
@@ -72,13 +73,15 @@ public class DemoProjectReactorApplication implements CommandLineRunner {
 		/*
 		 * Transform app = new Transform(); app.map(); app.flatMap(); app.groupBy();
 		 */
-		Filter app = new Filter();
-		// app.filter();
-		// app.distinct();
-		// app.take();
-		// app.takeLast();
-		//app.skip();
-		app.skipLast();
+		/*
+		 * Filter app = new Filter(); // app.filter(); // app.distinct(); // app.take();
+		 * // app.takeLast(); //app.skip(); app.skipLast();
+		 */
+
+		Combination app = new Combination();
+		// app.merge();
+		// app.zip();
+		app.zipWith();
 	}
 
 }
