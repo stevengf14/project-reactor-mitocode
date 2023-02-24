@@ -12,6 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import ec.com.learning.reactor.model.Person;
 import ec.com.learning.reactor.operator.combination.Combination;
 import ec.com.learning.reactor.operator.creation.Creation;
+import ec.com.learning.reactor.operator.error.ErrorOp;
 import ec.com.learning.reactor.operator.filter.Filter;
 import ec.com.learning.reactor.operator.transform.Transform;
 import io.reactivex.rxjava3.core.Observable;
@@ -78,10 +79,16 @@ public class DemoProjectReactorApplication implements CommandLineRunner {
 		 * // app.takeLast(); //app.skip(); app.skipLast();
 		 */
 
-		Combination app = new Combination();
-		// app.merge();
-		// app.zip();
-		app.zipWith();
+		/*
+		 * Combination app = new Combination(); // app.merge(); // app.zip();
+		 * app.zipWith();
+		 */
+
+		ErrorOp app = new ErrorOp();
+		// app.retry();
+		// app.errorReturn();
+		// app.errorResume();
+		app.errorMap();
 	}
 
 }
