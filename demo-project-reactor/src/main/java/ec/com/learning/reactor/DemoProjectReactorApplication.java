@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import ec.com.learning.reactor.model.Person;
 import ec.com.learning.reactor.operator.combination.Combination;
+import ec.com.learning.reactor.operator.conditional.Conditional;
 import ec.com.learning.reactor.operator.creation.Creation;
 import ec.com.learning.reactor.operator.error.ErrorOp;
 import ec.com.learning.reactor.operator.filter.Filter;
@@ -84,11 +85,15 @@ public class DemoProjectReactorApplication implements CommandLineRunner {
 		 * app.zipWith();
 		 */
 
-		ErrorOp app = new ErrorOp();
-		// app.retry();
-		// app.errorReturn();
-		// app.errorResume();
-		app.errorMap();
+		/*
+		 * ErrorOp app = new ErrorOp(); // app.retry(); // app.errorReturn(); //
+		 * app.errorResume(); app.errorMap();
+		 */
+
+		Conditional app = new Conditional();
+		// app.defaultIfEmpty();
+		// app.takeUntil();
+		app.timeOut();
 	}
 
 }
