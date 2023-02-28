@@ -15,6 +15,7 @@ import ec.com.learning.reactor.operator.conditional.Conditional;
 import ec.com.learning.reactor.operator.creation.Creation;
 import ec.com.learning.reactor.operator.error.ErrorOp;
 import ec.com.learning.reactor.operator.filter.Filter;
+import ec.com.learning.reactor.operator.mathematical.Mathematical;
 import ec.com.learning.reactor.operator.transform.Transform;
 import io.reactivex.rxjava3.core.Observable;
 import reactor.core.publisher.Flux;
@@ -90,10 +91,17 @@ public class DemoProjectReactorApplication implements CommandLineRunner {
 		 * app.errorResume(); app.errorMap();
 		 */
 
-		Conditional app = new Conditional();
-		// app.defaultIfEmpty();
-		// app.takeUntil();
-		app.timeOut();
+		/*
+		 * Conditional app = new Conditional(); // app.defaultIfEmpty(); //
+		 * app.takeUntil(); app.timeOut();
+		 */
+
+		Mathematical app = new Mathematical();
+		// app.average();
+		// app.count();
+		// app.min();
+		// app.sum();
+		app.summarizing();
 	}
 
 }
